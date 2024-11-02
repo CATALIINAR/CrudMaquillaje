@@ -27,6 +27,7 @@ public class ClientesController {
         this.clientesServices = clientesServices;
     }
 
+    ///editar metodos 
     //Método para obtener todos los clientes
     @GetMapping
     public List<ClientesEntit> getCountries(){
@@ -43,7 +44,7 @@ public class ClientesController {
     @PostMapping
     public String createCountry(){
 
-        return "POST COUNTRY";
+        return clientesServices.createCountry();
     }
 
     ////Método para actualizar un cliente
