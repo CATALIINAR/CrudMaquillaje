@@ -16,6 +16,18 @@ public class ProductosServices {
     public ProductosServices() {
         productos = new ArrayList<>();
         productos.add(new ProductosEntity(UUID.randomUUID(), "Pestañina", "facial", 10.500,15));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Pestañina", "facial", 10_500, 15));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Labial", "labios", 8_200, 20));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Base líquida", "facial", 25_000, 10));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Rubor", "facial", 12_000, 18));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Delineador", "ojos", 9_500, 25));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Corrector", "facial", 15_300, 12));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Sombras", "ojos", 30_000, 8));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Iluminador", "facial", 20_000, 10));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Polvo compacto", "facial", 18_500, 14));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Brillo labial", "labios", 7_800, 30));
+        productos.add(new ProductosEntity(UUID.randomUUID(), "Spray fijador", "facial", 22_000, 9));
+
 
     }
     public List<ProductosEntity> getAllCountries() {
@@ -23,19 +35,19 @@ public class ProductosServices {
     }
 
     public Optional<ProductosEntity> getCountryById(UUID id) {
-        return productos.stream().filter(country -> country.getId().equals(id)).findFirst();
+        return productos.stream().filter(productos -> productos.getId().equals(id)).findFirst();
     }
 
-    public ProductosEntity createCountry(ProductosEntity country) {
-        country.setId(UUID.randomUUID());
+    public ProductosEntity createCountry(ProductosEntity productos) {
+        productos.setId(UUID.randomUUID());
         productos
-                .add(country);
-        return country;
+                .add(productos);
+        return productos;
     }
-    public Optional<ProductosEntity> updateCountry(UUID id, ProductosEntity updatedCountry) {
+    public Optional<ProductosEntity> updateproductos(UUID id, ProductosEntity updatedproductos) {
         for (int i = 0; i < productos.size(); i++) {
-            ClientesEntity country = productos.get(i);
-            if (country.getId().equals(id)) {
+            ProductosEntity country = productos.get(i);
+            if (productos.getId().equals(id)) {
                 updatedCountry.setId(id);
                 productos.set(i, updatedCountry);
                 return Optional.of(updatedCountry);
@@ -45,7 +57,7 @@ public class ProductosServices {
     }
 
     public boolean deleteCountry(UUID id) {
-        return productos.removeIf(country -> country.getId().equals(id));
+        return productos.removeIf(productos -> productos.getId().equals(id));
     }
 
 }
