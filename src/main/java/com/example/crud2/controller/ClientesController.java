@@ -27,7 +27,7 @@ public class ClientesController {
         this.clientesServices = clientesServices;
     }
 
-    ///editar metodos 
+    
     //Método para obtener todos los clientes
     @GetMapping
     public List<ClientesEntit> getCountries(){
@@ -42,22 +42,26 @@ public class ClientesController {
 
     //Método para crear un cliente
     @PostMapping
-    public String createCountry(){
+    public ClientesEntity createCountry(@RequestBody ClientesEntity clientes){
 
-        return clientesServices.createCountry();
+        return (ClientesServices) clientesServices.createCountry(clientes);
     }
 
     ////Método para actualizar un cliente
     @PutMapping("/{id}")
-    public String updateCountry(@PathVariable UUID id){
-        clientesServices.updateCountry(id);
-        return "PUT COUNTRY";
+    public Optional<ClientesEntity> updateCountry(@PathVariable UUID id, @RequestBody ClientesEntity clientes){
+        
+        return clientesServices.updateCountry(id, clientes);
     }
 
     //Método para eliminar un cliente
     @DeleteMapping("/{id}")
     public String deleteCountry(@PathVariable UUID id){
-       clientesServices.deleteCountry(id);
-        return "DELETE COUNTRY";
+        boolean isDeleted = clientesServices.deleteCategory(id);
+        if (isDeleted) {
+            return "Cliente eliminada exitosamente";
+        } else {
+            return "Cliente no encontrada";
+        }
     }
 }
