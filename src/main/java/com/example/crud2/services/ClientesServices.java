@@ -33,18 +33,18 @@ public class ClientesServices {
     }
 
     public Optional<ClientesEntity> getCountryById(UUID id) {
-        return clientes.stream().filter(country -> country.getId().equals(id)).findFirst();
+        return clientes.stream().filter(clientes -> clientes.getId().equals(id)).findFirst();
     }
 
-    public ClientesEntity createCountry(ClientesEntity country) {
-        country.setId(UUID.randomUUID());
+    public ClientesEntity createClientes(ClientesEntity clientes) {
+        clientes.setId(UUID.randomUUID());
         clientes.add(country);
         return country;
     }
 
-    public Optional<ClientesEntity> updateCountry(UUID id, ClientesEntity updatedCountry) {
+    public Optional<ClientesEntity> updateClientes(UUID id, ClientesEntity updatedClientes) {
         for (int i = 0; i < clientes.size(); i++) {
-            ClientesEntity country = clientes.get(i);
+            ClientesEntity clientes= clientes.get(i);
             if (country.getId().equals(id)) {
                 updatedCountry.setId(id);
                 clientes.set(i, updatedCountry);
@@ -54,7 +54,7 @@ public class ClientesServices {
         return Optional.empty();
     }
 
-    public boolean deleteCountry(UUID id) {
-        return clientes.removeIf(country -> country.getId().equals(id));
+    public boolean deleteClientes(UUID id) {
+        return clientes.removeIf(clientes -> clientes.getId().equals(id));
     }
 }
