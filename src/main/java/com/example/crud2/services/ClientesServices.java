@@ -14,6 +14,17 @@ public class ClientesServices {
     public ClientesServices() {
         clientes = new ArrayList<>();
         clientes.add(new ClientesEntity(UUID.randomUUID(), "Carlos", "Florez", 25));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Laura", "González", 28));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Andrés", "Martínez", 32));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "María", "Pérez", 23));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Juan", "Rodríguez", 30));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Camila", "Ramírez", 27));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Diego", "Hernández", 35));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Daniela", "Jiménez", 29));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Felipe", "López", 26));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Valentina", "Morales", 24));
+        clientes.add(new ClientesEntity(UUID.randomUUID(), "Santiago", "Castro", 31));
+
 
     }
 
