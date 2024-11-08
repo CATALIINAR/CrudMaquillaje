@@ -29,34 +29,37 @@ public class EmpleadosController {
 
     //Método para obtener todos los empleado
     @GetMapping
-    public List<EmpleadosEntity> getCountries(){
-        return empleadosServices.getAllCountries();
+    public List<EmpleadosEntity> getEmpleados(){
+        return empleadosServices.getAllEmpleados();
     }
 
     //Método para obtener un empleado por id
     @GetMapping("/{id}")
-    public Optional<EmpleadosEntity> getCountry(@PathVariable UUID id){
+    public Optional<EmpleadosEntity> getEmpleados(@PathVariable UUID id){
         return empleadosServices.getCountryById(id);
     }
 
     //Método para crear un empleado
     @PostMapping
-    public String createCountry(){
+    public EmpleadosEntity createEmpleados(@RequestBody EmpleadosEntity empleados){
 
-        return "POST COUNTRY";
+        return (EmpleadosEntity) EmpleadosEntity.createEmpleados(empleados);
     }
 
     ////Método para actualizar un empleado
     @PutMapping("/{id}")
-    public String updateCountry(@PathVariable UUID id){
-        empleadosServices.updateCountry(id);
-        return "PUT COUNTRY";
+    publicOptional<EmpleadosEntity> updateEmpleados(@PathVariable UUID id, EmpleadosEntity empleados){
+        return empleadosServices.updateCountry(id, empleados);
+        
     }
 
     //Método para eliminar un empleado
     @DeleteMapping("/{id}")
-    public String deleteCountry(@PathVariable UUID id){
-        empleadosServices.deleteCountry(id);
-        return "DELETE COUNTRY";
-    }
+    public String deleteEmpleados(@PathVariable UUID id){
+        boolean isDeleted = empleadosService.deleteCategory(id);
+        if (isDeleted) {
+            return "Empleado eliminada exitosamente";
+        } else {
+            return "Empleado no encontrada";
+        }
 }
